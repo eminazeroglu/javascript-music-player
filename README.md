@@ -13,6 +13,10 @@ Bu musiqi oynatıcı tətbiqi, veb texnologiyaları istifadə edərək yaradılm
 - Yüklənmiş musiqi faylının müddəti göstərilir.
 
 ## Quraşdırma
-Bu tətbiqi işlətmək üçün aşağıdakı addımı izləyin
+- Bu tətbiqi işlətmək üçün aşağıdakı addımı izləyin
 
 git clone https://github.com/eminazeroglu/javascript-music-player
+
+- Canlı Linki
+
+https://bitcode-mp3.netlify.app/
