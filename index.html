@@ -14,15 +14,27 @@
             <img src="" id="music-photo" class="w-full h-full object-cover" alt="">
         </figure>
         <div class="bg-gray-100 p-4">
-            <p class="font-bold text-center" id="name"></p>
-            <small class="text-center block" id="author"></small>
+            <div class="flex items-center">
+                <div class="flex-1">
+                    <p class="font-bold" id="name"></p>
+                    <small class="block" id="author"></small>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="text-orange-500 cursor-pointer">
+                        <i class="fa-solid fa-volume-high" id="volume"></i>
+                    </span>
+                    <div class="h-[3px] w-[70px] relative bg-gray-300 cursor-pointer" id="volumeControl">
+                        <div class="absolute w-[100%] h-[3px] bg-orange-500 top-0 left-0" id="volumeLevel"></div>
+                    </div>
+                </div> 
+            </div>
             <div class="mt-5">
                 <audio src="" id="audio"></audio>
                 <div class="h-[3px] relative bg-gray-300">
-                    <div class="absolute w-[40%] h-[3px] bg-gray-600 top-0 left-0"></div>
+                    <div class="absolute w-[0] h-[3px] bg-gray-600 top-0 left-0" id="progressBar"></div>
                 </div>
                 <div class="flex justify-between text-xs pt-1">
-                    <span id="startTime">0:55</span>
+                    <span id="startTime"></span>
                     <span id="endTime"></span>
                 </div>
                 <div class="flex justify-center items-center space-x-4">

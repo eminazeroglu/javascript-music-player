@@ -11,6 +11,7 @@ class MusicPlayer {
         this.ui = ui;
         this.index = 0;
         this.played = false;
+        this.volumed = true;
 
         this.start();
     }
@@ -112,6 +113,7 @@ class MusicPlayer {
     }
 
     start() {
+        const obj = this;
         this.ui.btnPlay.addEventListener('click', () => this.play());
         this.ui.btnNext.addEventListener('click', () => this.next());
         this.ui.btnPrev.addEventListener('click', () => this.previous());
@@ -121,7 +123,36 @@ class MusicPlayer {
         })
 
         this.ui.audio.addEventListener('timeupdate', () => {
+            this.ui.endTime.textContent = this.calculateTime(this.ui.audio.duration - this.ui.audio.currentTime)
             this.ui.startTime.textContent = this.calculateTime(this.ui.audio.currentTime)
+
+            const percent = (this.ui.audio.currentTime / this.ui.audio.duration) * 100;
+
+            this.ui.progressBar.style.width = `${percent}%`
+        })
+
+        this.ui.volumeControl.addEventListener('click', function (e) {
+            const controlRect = this.getBoundingClientRect();
+            const newVolume = (e.clientX - controlRect.left) / controlRect.width;
+
+            obj.ui.volumeLevel.style.width = `${(newVolume * 100)}%`; 
+            obj.ui.audio.volume = newVolume;
+        })
+
+        this.ui.volume.addEventListener('click', () => {
+            this.volumed = !this.volumed;
+
+            if (this.volumed) {
+                this.ui.volume.classList = 'fa-solid fa-volume-high'
+                this.ui.audio.muted = false;
+                obj.ui.volumeLevel.style.width = `100%`; 
+                obj.ui.audio.volume = 1;
+            }
+            else {
+                this.ui.volume.classList = 'fa-solid fa-volume-xmark'
+                this.ui.audio.muted = true;
+                obj.ui.volumeLevel.style.width = `0%`; 
+            }
         })
     }
 }

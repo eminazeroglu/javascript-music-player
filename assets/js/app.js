@@ -9,6 +9,10 @@ const ui = {
     btnPlay: document.getElementById('btnPlay'),
     btnNext: document.getElementById('btnNext'),
     musicList: document.getElementById('musicList'),
+    progressBar: document.getElementById('progressBar'),
+    volumeControl: document.getElementById('volumeControl'),
+    volumeLevel: document.getElementById('volumeLevel'),
+    volume: document.getElementById('volume'),
 }
 
 let music = new MusicPlayer(musics, ui);
