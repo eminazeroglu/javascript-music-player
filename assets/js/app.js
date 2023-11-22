@@ -10,6 +10,7 @@ const ui = {
     btnNext: document.getElementById('btnNext'),
     musicList: document.getElementById('musicList'),
     progressBar: document.getElementById('progressBar'),
+    progressBarContent: document.getElementById('progressBarContent'),
     volumeControl: document.getElementById('volumeControl'),
     volumeLevel: document.getElementById('volumeLevel'),
     volume: document.getElementById('volume'),

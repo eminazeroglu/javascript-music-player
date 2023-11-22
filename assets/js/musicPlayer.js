@@ -28,6 +28,7 @@ class MusicPlayer {
             this.index = 0
         }
 
+        this.ui.audio.currentTime = 0;
         this.displayMusic();
         this.playAction();
         this.createPlayList();
@@ -41,6 +42,7 @@ class MusicPlayer {
             this.index = this.musicList.length - 1;
         }
 
+        this.ui.audio.currentTime = 0;
         this.displayMusic();
         this.playAction();
         this.createPlayList();
@@ -139,6 +141,16 @@ class MusicPlayer {
             obj.ui.audio.volume = newVolume;
         })
 
+        this.ui.progressBarContent.addEventListener('click', function (e) {
+            const progressRect = this.getBoundingClientRect();
+            const progress = (e.clientX - progressRect.left) / progressRect.width;
+
+            obj.ui.progressBar.style.width = `${(progress * 100)}%`;
+
+            obj.ui.startTime.textContent = obj.calculateTime(progress * obj.ui.audio.duration);
+            obj.ui.audio.currentTime = progress * obj.ui.audio.duration;
+        })
+
         this.ui.volume.addEventListener('click', () => {
             this.volumed = !this.volumed;
 
@@ -154,5 +166,17 @@ class MusicPlayer {
                 obj.ui.volumeLevel.style.width = `0%`; 
             }
         })
+
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'ArrowRight') {
+                this.next()
+            }
+            else if (e.code === 'ArrowLeft') {
+                this.previous();
+            }
+            else if (e.code === 'Space') {
+                this.play();
+            }
+        });
     }
 }
